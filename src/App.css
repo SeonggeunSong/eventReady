@@ -1,0 +1,291 @@
+.App {
+  text-align: center;
+}
+
+div{
+  box-shadow: bordr-box;
+}
+
+.initiative_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 615px;
+  left: 113px;
+}
+
+.initiative_button:hover {
+  color: magenta;
+}
+
+.initialModel_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 615px;
+  left: 424px;
+}
+
+.initialModel_button:hover {
+  color: magenta;
+}
+
+.programGoverning_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 615px;
+  left: 725px;
+}
+
+.programGoverning_button:hover {
+  color: magenta;
+}
+
+.qaEventManagement_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 615px;
+  left: 1333px;
+}
+
+.qaEventManagement_button:hover {
+  color: magenta;
+}
+
+.productionIssue_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 706px;
+  left: 113px;
+}
+
+.productionIssue_button:hover {
+  color: magenta;
+}
+
+.modifyModel_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 706px;
+  left: 424px;
+}
+
+.modifyModel_button:hover {
+  color: magenta;
+}
+
+.qaCapa_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 706px;
+  left: 725px;
+}
+
+.qaCapa_button:hover {
+  color: magenta;
+}
+
+.buildReuire_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 706px;
+  left: 1028px;
+}
+
+.buildReuire_button:hover {
+  color: magenta;
+}
+
+.eventLeading_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 706px;
+  left: 1333px;
+}
+
+.eventLeading_button:hover {
+  color: magenta;
+}
+
+.ecoManagement_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 706px;
+  left: 1638px;
+}
+
+.ecoManagement_button:hover {
+  color: magenta;
+}
+
+.fieldIssueManagement_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 799px;
+  left: 113px;
+}
+
+.fieldIssueManagement_button:hover {
+  color: magenta;
+}
+
+.ecoChangeManagement_button {
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 799px;
+  left: 424px;
+}
+
+.ecoChangeManagement_button:hover {
+  color: magenta;
+}
+
+.whatsNew_button {
+  width: 150px;
+  height: 22px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 70px;
+  left: 1700px;
+}
+
+.whatsNew_button:hover {
+  background-color: magenta;
+}
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
