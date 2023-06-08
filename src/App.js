@@ -75,13 +75,14 @@ const App = () => {
     { label: '서버 대응 적용 일정 확인', value: 'checkOpation9', },
     { label: 'SU 문구 요청',  value: 'checkOpation10', },
     { label: '법인 Pre Test 가이드', value: 'checkOpation11',  },
-  ];
-
-  const pmActivityWithDisabled = [
     { label: '조정규격서', value: 'checkOpation21', disabled: true },
     { label: 'Manual 요청',  value: 'checkOpation22', disabled: true },
     { label: 'eStreamer 요청', value: 'checkOpation23', disabled: true  },
     { label: 'Mini-BAT 결과', value: 'checkOpation24', disabled: true  },
+  ];
+
+  const pmActivityWithDisabled = [
+
   ];
 
   const initialModelPMActivityDefault=[
@@ -100,16 +101,7 @@ const App = () => {
 // Input Select 변경 시 PM Activity 에 대해 Check Box 연동하는 부분
   const [selectEventType, setselectEventType]= useState('initialModelEvent');
   const [selectPMActivity, setSelectPMActivity]= useState(changePMActivityDefault(selectEventType));
-
-
-  function onhandleSelectChange(event){ 
-    setselectEventType(event);
-    setSelectPMActivity(changePMActivityDefault(event));
-  };
-
-  useEffect(() => {
-    console.log('Event Type is = ', selectEventType); 
-  },[selectEventType]);  
+  const [inputTitleValue, setInputTitleValue]= useState('');
 
   function changePMActivityDefault(value){
     switch (value) {
@@ -126,28 +118,27 @@ const App = () => {
     }
   };
 
+  function onhandleSelectChange(event){ 
+    setselectEventType(event);
+    setSelectPMActivity(changePMActivityDefault(event));
+
+    setInputTitleValue(`[${event}] ${inputTitleValue}`);
+  };
+
+  useEffect(() => {
+    console.log('Event Type is = ', selectEventType); 
+    console.log('input Title is = ', inputTitleValue); 
+  },[selectEventType][inputTitleValue]);  
+
+
 // Check Box 개발 변경 시 PM Activity 활성화 /비활성화 하는 함수  
   function onCheckboxChange(checkedValues){
     setSelectPMActivity(checkedValues);
   };
 
-  useEffect(() => {
-    console.log('PM Activity is = ', selectPMActivity); 
-  },[selectPMActivity]);  
-
-  // Input EventTitle (OnChange Event 발생 시)
-  const [inputTitleValue, setInputTitleValue]= useState('');
-
-
-  function onInputEventTitle(e){
+  const onInputEventTitle =(e) => {
     setInputTitleValue(e.target.value);
-  };
-
-  // useEffect 반영하기 위해 만든 부분
-  useEffect(() => {
-    console.log('Input Title is = ', inputTitleValue); 
-  },[inputTitleValue]);  
-
+  }  
 
   return (
     // 전체 Form에 대한 Style 정의
@@ -223,13 +214,6 @@ const App = () => {
             value = {selectPMActivity}
             onChange={onCheckboxChange} />
           <br />
-          <br />
-
-          <Checkbox.Group
-            options={pmActivityWithDisabled}
-            disabled
-            onChange={onCheckboxChange}
-          />
         </div>
       </Form.Item>
 
@@ -238,10 +222,10 @@ const App = () => {
           <Button type="primary" htmlType="submit" onClick={onReset} >
             Make Activity
           </Button>
-          <Button htmlType="button" style ={{margin : '10px'}} onClick={onReset}>
+          <Button htmlType="button" style ={{margin : '20px'}} onClick={onReset}>
             Reset
           </Button>
-          <Button htmlType="button" style ={{margin : '10px'}}onClick={onFill}>
+          <Button htmlType="button" style ={{margin : '20px'}}onClick={onFill}>
             Search History
           </Button>
         </div>
