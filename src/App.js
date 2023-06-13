@@ -90,6 +90,7 @@ const columns = [
     ),
   },
 ];
+
 const data = [
   {
     key: '1',
@@ -194,6 +195,8 @@ const App = () => {
     setSelectPMActivity(changePMActivityDefault(event));
 
     setInputTitleValue(`[${event}] ${inputTitleValue}`);
+
+    
   };
 
   useEffect(() => {
