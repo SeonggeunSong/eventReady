@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import { Button, Form, Input, Select, Checkbox, Divider, Table } from 'antd';
 import {tableColumns, tableData} from './ui_table';
+import {jiraHistory} from './getJiraHistory';
 
 import mainUI from './eventReady_Title.jpg';
 
@@ -44,14 +45,25 @@ const MainimageStyle = {
   border: 'none',
 };
 
+// Event type Obj
+const ETYPE_OBJ = {
+  initialModelEvent : 'Initial Model Event',
+  mrModelEvent : 'MR Event',
+  modifyModelEvent : 'Modify Model Event',
+  productChange : 'Product Change',
+};
+
 const App = () => {
-  const formRef = React.useRef(null);
+  const formRef = React.useRef();
+  const titleInputRef = React.useRef(); // {currnent : null}
+
 
   function onFinish(values){
     console.log(values);
   };
 
   function onReset(){
+    setInputTitleValue('');
     formRef.current?.resetFields();
   };
 
@@ -60,6 +72,17 @@ const App = () => {
       note: 'Hello world!',
       eventType: 'Event Tpye',
     });*/
+  };
+
+  function searchHistory(){
+    jiraHistory();
+  }
+
+  let formStyleLong = {
+    width: '600px'
+  };
+  let formStyleShort = {
+    width: '250px'
   };
 
 
@@ -100,7 +123,7 @@ const App = () => {
   ]; 
 
 // Input Select 변경 시 PM Activity 에 대해 Check Box 연동하는 부분
-  const [selectEventType, setselectEventType]= useState('initialModelEvent');
+  const [selectEventType, setSelectEventType]= useState('initialModelEvent');
   const [selectPMActivity, setSelectPMActivity]= useState(changePMActivityDefault(selectEventType));
   const [inputTitleValue, setInputTitleValue]= useState('');
 
@@ -120,12 +143,29 @@ const App = () => {
   };
 
   function onhandleSelectChange(event){ 
-    setselectEventType(event);
+  
+    setSelectEventType(event);
     setSelectPMActivity(changePMActivityDefault(event));
 
-    setInputTitleValue(`[${event}] ${inputTitleValue}`);
-
+    let eTypeValue = '[' + ETYPE_OBJ[event] + ']';
+    let titleValue = `${inputTitleValue}`;
     
+    // 기존것 걸러내기
+    Object.keys(ETYPE_OBJ).forEach((key) => {
+      let temp_obj_value = '[' + ETYPE_OBJ[key] + ']';
+      if(titleValue.includes(temp_obj_value)){
+        titleValue = titleValue.replace(temp_obj_value, '').trimStart();
+      }
+    });
+
+    titleValue = eTypeValue +' '+ titleValue;
+    setInputTitleValue(titleValue); 
+    // input tag에 쓰기
+    formRef.current?.setFieldsValue({
+      eventTitle: titleValue,
+    });
+    // 포커스
+    titleInputRef.current.focus();
   };
 
   useEffect(() => {
@@ -160,7 +200,7 @@ const App = () => {
         <img src={mainUI} style ={MainimageStyle} /> 
       </div>
 
-      <Form.Item style={{padding: '20px 0' }}
+      <Form.Item style={{padding: '20px 0 0 0' }}
         name="eventTitle"
         label="Event Title"
         rules={[
@@ -170,7 +210,8 @@ const App = () => {
         ]}
       >
         <Input 
-          style = {{width: '600px',}}
+          ref = {titleInputRef}
+          style = {{formStyleLong}}
           placeholder = "Platform/SoC Name/시험명/Branch (Example - webOS22/O22n/인정시험1차/manas)"
           value = {inputTitleValue}
           onChange = {onInputEventTitle}
@@ -187,7 +228,7 @@ const App = () => {
         ]}
       >
         <Select
-          style={{width: '600px',}}
+          style={{formStyleLong}}
           placeholder="Select Event Type"
           value = {selectEventType}
           onChange={onhandleSelectChange} 
@@ -229,7 +270,7 @@ const App = () => {
           <Button htmlType="button" style ={{margin : '20px'}} onClick={onReset}>
             Reset
           </Button>
-          <Button htmlType="button" style ={{margin : '20px'}}onClick={onFill}>
+          <Button htmlType="button" style ={{margin : '20px'}}onClick={searchHistory}>
             Search History
           </Button>
         </div>
