@@ -260,8 +260,8 @@ const App = () => {
           <br />
         </div>
       </Form.Item>
-
       <Divider/>
+
       <Form.Item {...tailLayout}  >
         <div>
           <Button type="primary" htmlType="submit" onClick={onReset} >
@@ -276,6 +276,19 @@ const App = () => {
         </div>
       </Form.Item>
 
+      <Divider/>
+        {selectPMActivity.map((activity, idx) => {
+          for(let i=0; i<pmActivity.length;i++){
+            if(pmActivity[i].value.includes(activity)){
+              return <>
+                <Form.Item name={pmActivity[i].label} label={pmActivity[i].label}>
+                  <Input style = {{formStyleShort}}  placeholder = "세부 내용 입력하세요" />
+                </Form.Item>
+                </>;
+            }
+          }          
+        })}
+      
       <Divider/>
       <Table columns={tableColumns} dataSource={tableData} />
 
