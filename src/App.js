@@ -24,7 +24,6 @@ const tailLayout = {
 
 // Test용
 
-
 // Title Image 에 대한 Style 정의
 const containerStyle = {
   width: '100%',
