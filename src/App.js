@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import { Button, Form, Input, Select, Checkbox } from 'antd';
-import { Space, Table, Tag } from 'antd';
+import { Button, Form, Input, Select, Checkbox, Divider, Table } from 'antd';
+import {tableColumns, tableData} from './ui_table';
 
 import mainUI from './eventReady_Title.jpg';
 
@@ -22,6 +22,9 @@ const tailLayout = {
   },
 };
 
+// Test용
+
+
 // Title Image 에 대한 Style 정의
 const containerStyle = {
   width: '100%',
@@ -41,79 +44,6 @@ const MainimageStyle = {
   padding: 0,
   border: 'none',
 };
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
 
 const App = () => {
   const formRef = React.useRef(null);
@@ -291,6 +221,7 @@ const App = () => {
         </div>
       </Form.Item>
 
+      <Divider/>
       <Form.Item {...tailLayout}  >
         <div>
           <Button type="primary" htmlType="submit" onClick={onReset} >
@@ -305,7 +236,8 @@ const App = () => {
         </div>
       </Form.Item>
 
-      <Table columns={columns} dataSource={data} />
+      <Divider/>
+      <Table columns={tableColumns} dataSource={tableData} />
 
      </Form>
   );
