@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import { Button, Form, Input, Select, Checkbox, Divider, Table } from 'antd';
 import {tableColumns, tableData} from './ui_table';
-import {jiraHistory} from './getJiraHistory';
 
 import mainUI from './eventReady_Title.jpg';
 
@@ -75,7 +74,8 @@ const App = () => {
   };
 
   function searchHistory(){
-    jiraHistory();
+    //jiraHistory();
+    console.log("Test용");
   }
 
   let formStyleLong = {
